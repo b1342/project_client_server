@@ -1,0 +1,12 @@
+const express = require("express")
+const cors = require("cors")
+const corsOptions = require("./config/corsOptions")
+const{people,books}=require('./data')
+const app = express()
+const PORT = process.env.PORT || 1234
+app.use(cors(corsOptions))
+app.use(express.static("public"))
+// app.get("/", (req, res)=>{res.send("This is home page")})
+app.use("/api",require("./routes/t1"))
+app.use("/api",require("./routes/t2"))
+app.listen(PORT, ()=>{console.log(`Server run on ${PORT}`)})
